@@ -170,7 +170,7 @@ class BakingOperator:
     def _create_property_fcurve(self, context, property_name):
         action = context.object.animation_data.action
         fcurve_datapath = '["%s"]' % property_name
-        return action.fcurves.new(fcurve_datapath, 0, 'Wheels rotation')
+        return action.fcurves.new(fcurve_datapath, index=0, action_group='Wheels rotation')
 
 
 class BakeWheelRotationOperator(bpy.types.Operator, BakingOperator):
