@@ -21,8 +21,7 @@
 bl_info = {
     "name": "Rigacar (Generates Car Rig)",
     "author": "David Gayerie",
-    "version": (3, 0),
-    "version": (3, 1),
+    "version": (4, 0),
     "blender": (2, 80, 0),
     "location": "View3D > Add > Armature",
     "description": "Adds a deformation rig for vehicules, generates animation rig and bake wheels animation.",
@@ -30,17 +29,20 @@ bl_info = {
     "tracker_url": "https://github.com/digicreatures/rigacar/issues",
     "category": "Rigging"}
 
+
 if "bpy" in locals():
     import importlib
     if "bake_operators" in locals():
         importlib.reload(bake_operators)
     if "car_rig" in locals():
         importlib.reload(car_rig)
-
+    if "widgets" in locals():
+        importlib.reload(widgets)
+else:
+  from . import bake_operators
+  from . import car_rig
 
 import bpy
-from . import bake_operators
-from . import car_rig
 
 
 class BaseCarRigPanel:

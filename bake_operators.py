@@ -82,9 +82,9 @@ class EulerToQuaternionFCurvesEvaluator:
 
 
 class BakingOperator:
-    frame_start = bpy.props.IntProperty(name='Start Frame', min=1)
-    frame_end = bpy.props.IntProperty(name='End Frame', min=1)
-    keyframe_tolerance = bpy.props.FloatProperty(name='Keyframe tolerance', min=0, default=.4)
+    frame_start: bpy.props.IntProperty(name='Start Frame', min=1)
+    frame_end: bpy.props.IntProperty(name='End Frame', min=1)
+    keyframe_tolerance: bpy.props.FloatProperty(name='Keyframe tolerance', min=0, default=.4)
 
     @classmethod
     def poll(cls, context):
@@ -104,6 +104,8 @@ class BakingOperator:
         return context.window_manager.invoke_props_dialog(self)
 
     def draw(self, context):
+        self.layout.use_property_split = True
+        self.layout.use_property_decorate = False
         self.layout.prop(self, 'frame_start')
         self.layout.prop(self, 'frame_end')
         self.layout.prop(self, 'keyframe_tolerance')
@@ -250,9 +252,11 @@ class BakeSteeringOperator(bpy.types.Operator, BakingOperator):
     bl_description = 'Automatically generates steering animation based on Root bone animation.'
     bl_options = {'REGISTER', 'UNDO'}
 
-    rotation_factor = bpy.props.FloatProperty(name='Rotation factor', min=0.1, default=1.0)
+    rotation_factor: bpy.props.FloatProperty(name='Rotation factor', min=0.1, default=1.0)
 
     def draw(self, context):
+        self.layout.use_property_split = True
+        self.layout.use_property_decorate = False
         self.layout.prop(self, 'frame_start')
         self.layout.prop(self, 'frame_end')
         self.layout.prop(self, 'keyframe_tolerance')
