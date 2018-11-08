@@ -39,10 +39,9 @@ if "bpy" in locals():
     if "widgets" in locals():
         importlib.reload(widgets)
 else:
-  from . import bake_operators
-  from . import car_rig
-
-import bpy
+    import bpy
+    from . import bake_operators
+    from . import car_rig
 
 
 class BaseCarRigPanel:
