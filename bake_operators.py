@@ -252,7 +252,7 @@ class BakeSteeringOperator(bpy.types.Operator, BakingOperator):
     bl_description = 'Automatically generates steering animation based on Root bone animation.'
     bl_options = {'REGISTER', 'UNDO'}
 
-    rotation_factor: bpy.props.FloatProperty(name='Rotation factor', min=0.1, default=1.0)
+    rotation_factor: bpy.props.FloatProperty(name='Rotation factor', min=0.1, default=1.5)
 
     def draw(self, context):
         self.layout.use_property_split = True
